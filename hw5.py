@@ -18,7 +18,7 @@
 # the parameters should be stored as attributes
 # called "name" and "symptoms" respectively
 
-Class Patient:
+class Patient:
     def __init__(self, name: str, symptoms: list):
         self.name = name
         self.symptoms = symptoms
@@ -33,7 +33,7 @@ Class Patient:
 #
 # This information should be stored somehow.
 
-Class Patient:
+
     def add_test(self, test_name: str, test_result: bool):
         self.add_test = {test_name: test_result}
 
@@ -57,6 +57,33 @@ Class Patient:
 #    ['fever', 'cough', 'anosmia']
 
 
+    def has_covid(self) -> float:
+        if 'covid' in self.add_test:
+            if self.add_test['covid']:
+                return 0.99
+            else:
+                return 0.01
+        else:
+            probability = 0.05
+            symptoms_list = ['fever', 'cough', 'anosmia']
+            for symptom in symptoms_list:
+                if symptom in self.symptoms:
+                    probability += 0.1
+            return min(probability, 1.0)
+
+
+## Testing:
+Majo = Patient("Majo", ["fever", "cough", "fever"])
+Majo.add_test("covid", False)
+print(Majo.has_covid())
+
+
+## not covid test
+Majo = Patient("Majo", ["fever", "cough", "fever"])
+Majo.add_test("flu", False)
+print(Majo.has_covid())
+
+
 ######################
 
 # 2. In this exercise you will make an English Deck class made of Card classes
@@ -69,6 +96,11 @@ Class Patient:
 # The constructor (__init__ ) should have two parameters the "suit" and the "value" and the suit of the card.
 # The class should store both as attributes.
 
+class Card:
+    def __init__(self, suit: str, value: str):
+        self.suit = suit
+        self.value = value
+
 
 # 2.2) Create a Deck class called "Deck".
 # The constructor will create an English Deck (suits: Hearts, Diamonds, Clubs, Spades and values: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K). It will create a list of cards that contain each of the existing cards in an English Deck.
@@ -76,6 +108,37 @@ Class Patient:
 # Create a method called "draw" that will draw a single card and print the suit and value. When a card is drawn, the card should be removed from the deck.
 
 
+
+import random
+class Deck:
+    def __init__(self):
+        suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+        values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+        self.cards = [Card(suit, value) 
+                      for suit in suits
+                      for value in values]
+
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    def draw(self):
+        if self.cards:
+            card = self.cards.pop()
+            print(f'Drawn card: {card.value} of {card.suit}')
+            return card
+        else:
+            print('No more cards in the deck.')
+            return None
+        
+# Testing:
+deck = Deck()
+deck.shuffle()
+deck.draw()
+deck.draw()
+deck.draw()
+
+count = len(deck.cards)
+print(f'Cards left in deck: {count}')
 
 ###################
 
