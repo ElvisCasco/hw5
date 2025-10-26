@@ -30,6 +30,7 @@ include = ["process_data*"]
 dependencies = [
     "asttokens<3",
     "comm>=0.2.3",
+    "debugpy>=1.8.17",
     "ipython>=9.6.0",
     "numpy>=2.3.4",
     "pandas>=2.3.3",
