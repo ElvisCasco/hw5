@@ -149,6 +149,7 @@ print(f'Cards left in deck: {count}')
 # compute_perimeter() that will implement the formula to compute the perimiter of the plane figure.
 # compute_surface() that will implement the formula to compute the surface of the plane figure.
 
+<<<<<<< HEAD
 from abc import ABC, abstractmethod
 import math
 
@@ -163,6 +164,16 @@ class PlaneFigure(ABC):
         pass
 
 
+=======
+
+class PlaneFigure:
+    def __init__(self):
+        pass
+    def compute_perimeter(self):
+
+    #def compute_surface(self):
+        raise NotImplementedError("Subclasses must implement this method")
+>>>>>>> 5f795e7 (updated exercxercises to hw5)
 # 3.2 Create a child class called "Triangle" that inherits from "PlaneFigure" and has as parameters in the constructor "base", "c1", "c2", "h". ("base" being the base, "c1" and "c2" the other two sides of the triangle and "h" the height). Implement the abstract methods with the formula of the triangle.
 
 class Triangle(PlaneFigure):
