@@ -24,6 +24,16 @@ wheels/
 # VS Code
 .vscode/
 
-# Environment
+# Environments
 venv/
 ENV/
+
+# Data files
+*.csv
+*.xlsx
+*.xls
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
